@@ -36,13 +36,35 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 1,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Connecting mayofaulkner@datajoint.internationalbrainlab.org:3306\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Connected to https://alyx.internationalbrainlab.org as mayo"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    }
+   ],
    "source": [
     "import datajoint as dj\n",
     "dj.config['display.limit'] = 5\n",
-    "from ibl_pipeline import reference, subject, action, acquisition, data, behavior, ephys\n",
+    "from ibl_pipeline import reference, subject, action, acquisition, data, behavior\n",
     "from ibl_pipeline.analyses import behavior as behavior_analyses"
    ]
   },
@@ -56,9 +78,59 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 2,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "['group_shared_anneurai_analyses',\n",
+       " 'group_shared_anneurai_psytrack',\n",
+       " 'group_shared_end_criteria',\n",
+       " 'group_shared_ephys',\n",
+       " 'group_shared_sfndata',\n",
+       " 'group_shared_testing',\n",
+       " 'group_shared_wheel',\n",
+       " 'group_shared_wheel_moves',\n",
+       " 'ibl_acquisition',\n",
+       " 'ibl_action',\n",
+       " 'ibl_alyxraw',\n",
+       " 'ibl_analyses_behavior',\n",
+       " 'ibl_analyses_ephys',\n",
+       " 'ibl_behavior',\n",
+       " 'ibl_data',\n",
+       " 'ibl_dj_acquisition',\n",
+       " 'ibl_dj_action',\n",
+       " 'ibl_dj_behavior',\n",
+       " 'ibl_dj_data',\n",
+       " 'ibl_dj_reference',\n",
+       " 'ibl_dj_subject',\n",
+       " 'ibl_ephys',\n",
+       " 'ibl_histology',\n",
+       " 'ibl_ingest_acquisition',\n",
+       " 'ibl_ingest_action',\n",
+       " 'ibl_ingest_data',\n",
+       " 'ibl_ingest_ephys',\n",
+       " 'ibl_ingest_histology',\n",
+       " 'ibl_ingest_reference',\n",
+       " 'ibl_ingest_subject',\n",
+       " 'ibl_jaib1_tutorial',\n",
+       " 'ibl_patch',\n",
+       " 'ibl_plotting_behavior',\n",
+       " 'ibl_plotting_ephys',\n",
+       " 'ibl_public',\n",
+       " 'ibl_reference',\n",
+       " 'ibl_storage',\n",
+       " 'ibl_subject',\n",
+       " 'ibl_update',\n",
+       " 'user_mayofaulkner_tutorial']"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "dj.list_schemas()"
    ]
@@ -112,7 +184,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -129,11 +201,404 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 4,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Allele"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "AlleleSequence"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "BreedingPair"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "CageType"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Caging"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Death"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enrichment"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Food"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "GenotypeTest"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Housing"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Implant"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Line"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "LineAllele"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Litter"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "LitterSubject"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sequence"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Source"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Species"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Strain"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Subject"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "SubjectCullMethod"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "SubjectHousing"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "SubjectLab"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "SubjectProject"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "SubjectUser"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "UserHistory"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Weaning"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Zygosity"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    }
+   ],
    "source": [
-    "list_tables(ephys)"
+    "list_tables(subject)"
    ]
   },
   {
@@ -146,9 +611,45 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 5,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "subject_uuid         : uuid                         \n",
+      "---\n",
+      "subject_nickname     : varchar(255)                 # nickname\n",
+      "sex                  : enum('M','F','U')            # sex\n",
+      "subject_birth_date=null : date                         # birth date\n",
+      "ear_mark=null        : varchar(255)                 # ear mark\n",
+      "-> [nullable] subject.Line.proj(subject_line=\"line_name\")\n",
+      "-> [nullable] subject.Source.proj(subject_source=\"source_name\")\n",
+      "protocol_number      : tinyint                      # protocol number\n",
+      "subject_description=null : varchar(1024)                \n",
+      "subject_ts=CURRENT_TIMESTAMP : timestamp                    \n",
+      "-> [nullable] subject.Strain.proj(subject_strain=\"strain_name\")\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n"
+     ]
+    },
+    {
+     "data": {
+      "text/plain": [
+       "'subject_uuid         : uuid                         \\n---\\nsubject_nickname     : varchar(255)                 # nickname\\nsex                  : enum(\\'M\\',\\'F\\',\\'U\\')            # sex\\nsubject_birth_date=null : date                         # birth date\\near_mark=null        : varchar(255)                 # ear mark\\n-> [nullable] subject.Line.proj(subject_line=\"line_name\")\\n-> [nullable] subject.Source.proj(subject_source=\"source_name\")\\nprotocol_number      : tinyint                      # protocol number\\nsubject_description=null : varchar(1024)                \\nsubject_ts=CURRENT_TIMESTAMP : timestamp                    \\n-> [nullable] subject.Strain.proj(subject_strain=\"strain_name\")\\n'"
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "subject.Subject.describe()"
    ]
@@ -169,9 +670,173 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 6,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        \n",
+       "        <style type=\"text/css\">\n",
+       "            .Relation{\n",
+       "                border-collapse:collapse;\n",
+       "            }\n",
+       "            .Relation th{\n",
+       "                background: #A0A0A0; color: #ffffff; padding:4px; border:#f0e0e0 1px solid;\n",
+       "                font-weight: normal; font-family: monospace; font-size: 100%;\n",
+       "            }\n",
+       "            .Relation td{\n",
+       "                padding:4px; border:#f0e0e0 1px solid; font-size:100%;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(odd){\n",
+       "                background: #ffffff;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(even){\n",
+       "                background: #f3f1ff;\n",
+       "            }\n",
+       "            /* Tooltip container */\n",
+       "            .djtooltip {\n",
+       "            }\n",
+       "            /* Tooltip text */\n",
+       "            .djtooltip .djtooltiptext {\n",
+       "                visibility: hidden;\n",
+       "                width: 120px;\n",
+       "                background-color: black;\n",
+       "                color: #fff;\n",
+       "                text-align: center;\n",
+       "                padding: 5px 0;\n",
+       "                border-radius: 6px;\n",
+       "                /* Position the tooltip text - see examples below! */\n",
+       "                position: absolute;\n",
+       "                z-index: 1;\n",
+       "            }\n",
+       "            #primary {\n",
+       "                font-weight: bold;\n",
+       "                color: black;\n",
+       "            }\n",
+       "\n",
+       "            #nonprimary {\n",
+       "                font-weight: normal;\n",
+       "                color: white;\n",
+       "            }\n",
+       "\n",
+       "            /* Show the tooltip text when you mouse over the tooltip container */\n",
+       "            .djtooltip:hover .djtooltiptext {\n",
+       "                visibility: visible;\n",
+       "            }\n",
+       "        </style>\n",
+       "        \n",
+       "        <b></b>\n",
+       "            <div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+       "            <table border=\"1\" class=\"Relation\">\n",
+       "                <thead> <tr style=\"text-align: right;\"> <th> <div class=\"djtooltip\">\n",
+       "                                <p id=\"primary\">subject_uuid</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_nickname</p>\n",
+       "                                <span class=\"djtooltiptext\">nickname</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">sex</p>\n",
+       "                                <span class=\"djtooltiptext\">sex</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_birth_date</p>\n",
+       "                                <span class=\"djtooltiptext\">birth date</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">ear_mark</p>\n",
+       "                                <span class=\"djtooltiptext\">ear mark</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_line</p>\n",
+       "                                <span class=\"djtooltiptext\">name</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_source</p>\n",
+       "                                <span class=\"djtooltiptext\">name of source</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">protocol_number</p>\n",
+       "                                <span class=\"djtooltiptext\">protocol number</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_description</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_ts</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_strain</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div> </th> </tr> </thead>\n",
+       "                <tbody> <tr> <td>0026c82d-39e4-4c6b-acb3-303eb4b24f05</td>\n",
+       "<td>IBL_32</td>\n",
+       "<td>M</td>\n",
+       "<td>2018-04-23</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6NCrl</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>1</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-08-06 21:30:42</td>\n",
+       "<td>C57BL/6N</td></tr><tr><td>00778394-c956-408d-8a6c-ca3b05a611d5</td>\n",
+       "<td>KS019</td>\n",
+       "<td>F</td>\n",
+       "<td>2019-04-30</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>None</td>\n",
+       "<td>2</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-08-13 17:07:33</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>00c60db3-74c3-4ee2-9df9-2c84acf84e92</td>\n",
+       "<td>ibl_witten_10</td>\n",
+       "<td>F</td>\n",
+       "<td>2018-11-13</td>\n",
+       "<td>notag</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Jax</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>0124f697-16ce-4f59-b87c-e53fcb3a27ac</td>\n",
+       "<td>6867</td>\n",
+       "<td>M</td>\n",
+       "<td>2018-06-25</td>\n",
+       "<td>None</td>\n",
+       "<td>Thy1-GCaMP6s</td>\n",
+       "<td>CCU - Margarida colonies</td>\n",
+       "<td>1</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>019a22c1-b944-4494-9e38-0e45ae6697bf</td>\n",
+       "<td>SWC_022</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-06-18</td>\n",
+       "<td>NA (Front HP)</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>4</td>\n",
+       "<td>ID: 990762</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td> </tr> </tbody>\n",
+       "            </table>\n",
+       "            <p>...</p>\n",
+       "            <p>Total: 798</p></div>\n",
+       "            "
+      ],
+      "text/plain": [
+       "*subject_uuid  subject_nickna sex     subject_birth_ ear_mark       subject_line   subject_source protocol_numbe subject_descri subject_ts     subject_strain\n",
+       "+------------+ +------------+ +-----+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+\n",
+       "0026c82d-39e4- IBL_32         M       2018-04-23     None           C57BL/6NCrl    Charles River  1              None           2019-08-06 21: C57BL/6N      \n",
+       "00778394-c956- KS019          F       2019-04-30     None           C57BL/6J       None           2              None           2019-08-13 17: C57BL/6J      \n",
+       "00c60db3-74c3- ibl_witten_10  F       2018-11-13     notag          C57BL/6J       Jax            3              None           2019-09-25 01: C57BL/6J      \n",
+       "0124f697-16ce- 6867           M       2018-06-25     None           Thy1-GCaMP6s   CCU - Margarid 1              None           2019-09-25 01: C57BL/6J      \n",
+       "019a22c1-b944- SWC_022        M       2019-06-18     NA (Front HP)  C57BL/6J       Charles River  4              ID: 990762     2019-09-25 01: C57BL/6J      \n",
+       "   ...\n",
+       " (Total: 798)"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "subject.Subject()"
    ]
@@ -192,9 +857,128 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 7,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        \n",
+       "        <style type=\"text/css\">\n",
+       "            .Relation{\n",
+       "                border-collapse:collapse;\n",
+       "            }\n",
+       "            .Relation th{\n",
+       "                background: #A0A0A0; color: #ffffff; padding:4px; border:#f0e0e0 1px solid;\n",
+       "                font-weight: normal; font-family: monospace; font-size: 100%;\n",
+       "            }\n",
+       "            .Relation td{\n",
+       "                padding:4px; border:#f0e0e0 1px solid; font-size:100%;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(odd){\n",
+       "                background: #ffffff;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(even){\n",
+       "                background: #f3f1ff;\n",
+       "            }\n",
+       "            /* Tooltip container */\n",
+       "            .djtooltip {\n",
+       "            }\n",
+       "            /* Tooltip text */\n",
+       "            .djtooltip .djtooltiptext {\n",
+       "                visibility: hidden;\n",
+       "                width: 120px;\n",
+       "                background-color: black;\n",
+       "                color: #fff;\n",
+       "                text-align: center;\n",
+       "                padding: 5px 0;\n",
+       "                border-radius: 6px;\n",
+       "                /* Position the tooltip text - see examples below! */\n",
+       "                position: absolute;\n",
+       "                z-index: 1;\n",
+       "            }\n",
+       "            #primary {\n",
+       "                font-weight: bold;\n",
+       "                color: black;\n",
+       "            }\n",
+       "\n",
+       "            #nonprimary {\n",
+       "                font-weight: normal;\n",
+       "                color: white;\n",
+       "            }\n",
+       "\n",
+       "            /* Show the tooltip text when you mouse over the tooltip container */\n",
+       "            .djtooltip:hover .djtooltiptext {\n",
+       "                visibility: visible;\n",
+       "            }\n",
+       "        </style>\n",
+       "        \n",
+       "        <b></b>\n",
+       "            <div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+       "            <table border=\"1\" class=\"Relation\">\n",
+       "                <thead> <tr style=\"text-align: right;\"> <th> <div class=\"djtooltip\">\n",
+       "                                <p id=\"primary\">subject_uuid</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_nickname</p>\n",
+       "                                <span class=\"djtooltiptext\">nickname</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">sex</p>\n",
+       "                                <span class=\"djtooltiptext\">sex</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_birth_date</p>\n",
+       "                                <span class=\"djtooltiptext\">birth date</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">ear_mark</p>\n",
+       "                                <span class=\"djtooltiptext\">ear mark</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_line</p>\n",
+       "                                <span class=\"djtooltiptext\">name</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_source</p>\n",
+       "                                <span class=\"djtooltiptext\">name of source</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">protocol_number</p>\n",
+       "                                <span class=\"djtooltiptext\">protocol number</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_description</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_ts</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_strain</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div> </th> </tr> </thead>\n",
+       "                <tbody> <tr> <td>00c60db3-74c3-4ee2-9df9-2c84acf84e92</td>\n",
+       "<td>ibl_witten_10</td>\n",
+       "<td>F</td>\n",
+       "<td>2018-11-13</td>\n",
+       "<td>notag</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Jax</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td> </tr> </tbody>\n",
+       "            </table>\n",
+       "            \n",
+       "            <p>Total: 1</p></div>\n",
+       "            "
+      ],
+      "text/plain": [
+       "*subject_uuid  subject_nickna sex     subject_birth_ ear_mark     subject_line   subject_source protocol_numbe subject_descri subject_ts     subject_strain\n",
+       "+------------+ +------------+ +-----+ +------------+ +----------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+\n",
+       "00c60db3-74c3- ibl_witten_10  F       2018-11-13     notag        C57BL/6J       Jax            3              None           2019-09-25 01: C57BL/6J      \n",
+       " (Total: 1)"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# restrict by string\n",
     "subject.Subject & 'subject_nickname=\"ibl_witten_10\"'"
@@ -202,9 +986,128 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 8,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        \n",
+       "        <style type=\"text/css\">\n",
+       "            .Relation{\n",
+       "                border-collapse:collapse;\n",
+       "            }\n",
+       "            .Relation th{\n",
+       "                background: #A0A0A0; color: #ffffff; padding:4px; border:#f0e0e0 1px solid;\n",
+       "                font-weight: normal; font-family: monospace; font-size: 100%;\n",
+       "            }\n",
+       "            .Relation td{\n",
+       "                padding:4px; border:#f0e0e0 1px solid; font-size:100%;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(odd){\n",
+       "                background: #ffffff;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(even){\n",
+       "                background: #f3f1ff;\n",
+       "            }\n",
+       "            /* Tooltip container */\n",
+       "            .djtooltip {\n",
+       "            }\n",
+       "            /* Tooltip text */\n",
+       "            .djtooltip .djtooltiptext {\n",
+       "                visibility: hidden;\n",
+       "                width: 120px;\n",
+       "                background-color: black;\n",
+       "                color: #fff;\n",
+       "                text-align: center;\n",
+       "                padding: 5px 0;\n",
+       "                border-radius: 6px;\n",
+       "                /* Position the tooltip text - see examples below! */\n",
+       "                position: absolute;\n",
+       "                z-index: 1;\n",
+       "            }\n",
+       "            #primary {\n",
+       "                font-weight: bold;\n",
+       "                color: black;\n",
+       "            }\n",
+       "\n",
+       "            #nonprimary {\n",
+       "                font-weight: normal;\n",
+       "                color: white;\n",
+       "            }\n",
+       "\n",
+       "            /* Show the tooltip text when you mouse over the tooltip container */\n",
+       "            .djtooltip:hover .djtooltiptext {\n",
+       "                visibility: visible;\n",
+       "            }\n",
+       "        </style>\n",
+       "        \n",
+       "        <b></b>\n",
+       "            <div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+       "            <table border=\"1\" class=\"Relation\">\n",
+       "                <thead> <tr style=\"text-align: right;\"> <th> <div class=\"djtooltip\">\n",
+       "                                <p id=\"primary\">subject_uuid</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_nickname</p>\n",
+       "                                <span class=\"djtooltiptext\">nickname</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">sex</p>\n",
+       "                                <span class=\"djtooltiptext\">sex</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_birth_date</p>\n",
+       "                                <span class=\"djtooltiptext\">birth date</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">ear_mark</p>\n",
+       "                                <span class=\"djtooltiptext\">ear mark</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_line</p>\n",
+       "                                <span class=\"djtooltiptext\">name</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_source</p>\n",
+       "                                <span class=\"djtooltiptext\">name of source</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">protocol_number</p>\n",
+       "                                <span class=\"djtooltiptext\">protocol number</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_description</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_ts</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_strain</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div> </th> </tr> </thead>\n",
+       "                <tbody> <tr> <td>00c60db3-74c3-4ee2-9df9-2c84acf84e92</td>\n",
+       "<td>ibl_witten_10</td>\n",
+       "<td>F</td>\n",
+       "<td>2018-11-13</td>\n",
+       "<td>notag</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Jax</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td> </tr> </tbody>\n",
+       "            </table>\n",
+       "            \n",
+       "            <p>Total: 1</p></div>\n",
+       "            "
+      ],
+      "text/plain": [
+       "*subject_uuid  subject_nickna sex     subject_birth_ ear_mark     subject_line   subject_source protocol_numbe subject_descri subject_ts     subject_strain\n",
+       "+------------+ +------------+ +-----+ +------------+ +----------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+\n",
+       "00c60db3-74c3- ibl_witten_10  F       2018-11-13     notag        C57BL/6J       Jax            3              None           2019-09-25 01: C57BL/6J      \n",
+       " (Total: 1)"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "# restrict by dictionary\n",
     "from uuid import UUID\n",
@@ -220,9 +1123,173 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 9,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        \n",
+       "        <style type=\"text/css\">\n",
+       "            .Relation{\n",
+       "                border-collapse:collapse;\n",
+       "            }\n",
+       "            .Relation th{\n",
+       "                background: #A0A0A0; color: #ffffff; padding:4px; border:#f0e0e0 1px solid;\n",
+       "                font-weight: normal; font-family: monospace; font-size: 100%;\n",
+       "            }\n",
+       "            .Relation td{\n",
+       "                padding:4px; border:#f0e0e0 1px solid; font-size:100%;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(odd){\n",
+       "                background: #ffffff;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(even){\n",
+       "                background: #f3f1ff;\n",
+       "            }\n",
+       "            /* Tooltip container */\n",
+       "            .djtooltip {\n",
+       "            }\n",
+       "            /* Tooltip text */\n",
+       "            .djtooltip .djtooltiptext {\n",
+       "                visibility: hidden;\n",
+       "                width: 120px;\n",
+       "                background-color: black;\n",
+       "                color: #fff;\n",
+       "                text-align: center;\n",
+       "                padding: 5px 0;\n",
+       "                border-radius: 6px;\n",
+       "                /* Position the tooltip text - see examples below! */\n",
+       "                position: absolute;\n",
+       "                z-index: 1;\n",
+       "            }\n",
+       "            #primary {\n",
+       "                font-weight: bold;\n",
+       "                color: black;\n",
+       "            }\n",
+       "\n",
+       "            #nonprimary {\n",
+       "                font-weight: normal;\n",
+       "                color: white;\n",
+       "            }\n",
+       "\n",
+       "            /* Show the tooltip text when you mouse over the tooltip container */\n",
+       "            .djtooltip:hover .djtooltiptext {\n",
+       "                visibility: visible;\n",
+       "            }\n",
+       "        </style>\n",
+       "        \n",
+       "        <b></b>\n",
+       "            <div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+       "            <table border=\"1\" class=\"Relation\">\n",
+       "                <thead> <tr style=\"text-align: right;\"> <th> <div class=\"djtooltip\">\n",
+       "                                <p id=\"primary\">subject_uuid</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_nickname</p>\n",
+       "                                <span class=\"djtooltiptext\">nickname</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">sex</p>\n",
+       "                                <span class=\"djtooltiptext\">sex</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_birth_date</p>\n",
+       "                                <span class=\"djtooltiptext\">birth date</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">ear_mark</p>\n",
+       "                                <span class=\"djtooltiptext\">ear mark</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_line</p>\n",
+       "                                <span class=\"djtooltiptext\">name</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_source</p>\n",
+       "                                <span class=\"djtooltiptext\">name of source</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">protocol_number</p>\n",
+       "                                <span class=\"djtooltiptext\">protocol number</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_description</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_ts</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_strain</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div> </th> </tr> </thead>\n",
+       "                <tbody> <tr> <td>0026c82d-39e4-4c6b-acb3-303eb4b24f05</td>\n",
+       "<td>IBL_32</td>\n",
+       "<td>M</td>\n",
+       "<td>2018-04-23</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6NCrl</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>1</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-08-06 21:30:42</td>\n",
+       "<td>C57BL/6N</td></tr><tr><td>0124f697-16ce-4f59-b87c-e53fcb3a27ac</td>\n",
+       "<td>6867</td>\n",
+       "<td>M</td>\n",
+       "<td>2018-06-25</td>\n",
+       "<td>None</td>\n",
+       "<td>Thy1-GCaMP6s</td>\n",
+       "<td>CCU - Margarida colonies</td>\n",
+       "<td>1</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>019a22c1-b944-4494-9e38-0e45ae6697bf</td>\n",
+       "<td>SWC_022</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-06-18</td>\n",
+       "<td>NA (Front HP)</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>4</td>\n",
+       "<td>ID: 990762</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>01be78e7-8741-4b40-bd64-79ed745431b5</td>\n",
+       "<td>CSHL057</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-10-15</td>\n",
+       "<td>L</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Jax</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-12-12 04:43:42</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>030f3e05-9db0-46ba-a6ce-4274ff09b39e</td>\n",
+       "<td>KS031</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-12-10</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>None</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2020-02-14 04:56:14</td>\n",
+       "<td>C57BL/6J</td> </tr> </tbody>\n",
+       "            </table>\n",
+       "            <p>...</p>\n",
+       "            <p>Total: 374</p></div>\n",
+       "            "
+      ],
+      "text/plain": [
+       "*subject_uuid  subject_nickna sex     subject_birth_ ear_mark       subject_line   subject_source protocol_numbe subject_descri subject_ts     subject_strain\n",
+       "+------------+ +------------+ +-----+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+\n",
+       "0026c82d-39e4- IBL_32         M       2018-04-23     None           C57BL/6NCrl    Charles River  1              None           2019-08-06 21: C57BL/6N      \n",
+       "0124f697-16ce- 6867           M       2018-06-25     None           Thy1-GCaMP6s   CCU - Margarid 1              None           2019-09-25 01: C57BL/6J      \n",
+       "019a22c1-b944- SWC_022        M       2019-06-18     NA (Front HP)  C57BL/6J       Charles River  4              ID: 990762     2019-09-25 01: C57BL/6J      \n",
+       "01be78e7-8741- CSHL057        M       2019-10-15     L              C57BL/6J       Jax            3              None           2019-12-12 04: C57BL/6J      \n",
+       "030f3e05-9db0- KS031          M       2019-12-10     None           C57BL/6J       None           3              None           2020-02-14 04: C57BL/6J      \n",
+       "   ...\n",
+       " (Total: 374)"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "subject.Subject & {'sex': 'm'}"
    ]
@@ -236,9 +1303,173 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 10,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        \n",
+       "        <style type=\"text/css\">\n",
+       "            .Relation{\n",
+       "                border-collapse:collapse;\n",
+       "            }\n",
+       "            .Relation th{\n",
+       "                background: #A0A0A0; color: #ffffff; padding:4px; border:#f0e0e0 1px solid;\n",
+       "                font-weight: normal; font-family: monospace; font-size: 100%;\n",
+       "            }\n",
+       "            .Relation td{\n",
+       "                padding:4px; border:#f0e0e0 1px solid; font-size:100%;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(odd){\n",
+       "                background: #ffffff;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(even){\n",
+       "                background: #f3f1ff;\n",
+       "            }\n",
+       "            /* Tooltip container */\n",
+       "            .djtooltip {\n",
+       "            }\n",
+       "            /* Tooltip text */\n",
+       "            .djtooltip .djtooltiptext {\n",
+       "                visibility: hidden;\n",
+       "                width: 120px;\n",
+       "                background-color: black;\n",
+       "                color: #fff;\n",
+       "                text-align: center;\n",
+       "                padding: 5px 0;\n",
+       "                border-radius: 6px;\n",
+       "                /* Position the tooltip text - see examples below! */\n",
+       "                position: absolute;\n",
+       "                z-index: 1;\n",
+       "            }\n",
+       "            #primary {\n",
+       "                font-weight: bold;\n",
+       "                color: black;\n",
+       "            }\n",
+       "\n",
+       "            #nonprimary {\n",
+       "                font-weight: normal;\n",
+       "                color: white;\n",
+       "            }\n",
+       "\n",
+       "            /* Show the tooltip text when you mouse over the tooltip container */\n",
+       "            .djtooltip:hover .djtooltiptext {\n",
+       "                visibility: visible;\n",
+       "            }\n",
+       "        </style>\n",
+       "        \n",
+       "        <b></b>\n",
+       "            <div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+       "            <table border=\"1\" class=\"Relation\">\n",
+       "                <thead> <tr style=\"text-align: right;\"> <th> <div class=\"djtooltip\">\n",
+       "                                <p id=\"primary\">subject_uuid</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_nickname</p>\n",
+       "                                <span class=\"djtooltiptext\">nickname</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">sex</p>\n",
+       "                                <span class=\"djtooltiptext\">sex</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_birth_date</p>\n",
+       "                                <span class=\"djtooltiptext\">birth date</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">ear_mark</p>\n",
+       "                                <span class=\"djtooltiptext\">ear mark</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_line</p>\n",
+       "                                <span class=\"djtooltiptext\">name</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_source</p>\n",
+       "                                <span class=\"djtooltiptext\">name of source</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">protocol_number</p>\n",
+       "                                <span class=\"djtooltiptext\">protocol number</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_description</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_ts</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_strain</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div> </th> </tr> </thead>\n",
+       "                <tbody> <tr> <td>00778394-c956-408d-8a6c-ca3b05a611d5</td>\n",
+       "<td>KS019</td>\n",
+       "<td>F</td>\n",
+       "<td>2019-04-30</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>None</td>\n",
+       "<td>2</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-08-13 17:07:33</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>019a22c1-b944-4494-9e38-0e45ae6697bf</td>\n",
+       "<td>SWC_022</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-06-18</td>\n",
+       "<td>NA (Front HP)</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>4</td>\n",
+       "<td>ID: 990762</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>01be78e7-8741-4b40-bd64-79ed745431b5</td>\n",
+       "<td>CSHL057</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-10-15</td>\n",
+       "<td>L</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Jax</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-12-12 04:43:42</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>030f3e05-9db0-46ba-a6ce-4274ff09b39e</td>\n",
+       "<td>KS031</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-12-10</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>None</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2020-02-14 04:56:14</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>05ff9c40-a1c6-479c-9655-3125b41a0673</td>\n",
+       "<td>lic_1</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-12-28</td>\n",
+       "<td>NA</td>\n",
+       "<td>Dat-Cre</td>\n",
+       "<td>None</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-08-06 21:30:42</td>\n",
+       "<td>C57BL/6J</td> </tr> </tbody>\n",
+       "            </table>\n",
+       "            <p>...</p>\n",
+       "            <p>Total: 375</p></div>\n",
+       "            "
+      ],
+      "text/plain": [
+       "*subject_uuid  subject_nickna sex     subject_birth_ ear_mark       subject_line   subject_source protocol_numbe subject_descri subject_ts     subject_strain\n",
+       "+------------+ +------------+ +-----+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+\n",
+       "00778394-c956- KS019          F       2019-04-30     None           C57BL/6J       None           2              None           2019-08-13 17: C57BL/6J      \n",
+       "019a22c1-b944- SWC_022        M       2019-06-18     NA (Front HP)  C57BL/6J       Charles River  4              ID: 990762     2019-09-25 01: C57BL/6J      \n",
+       "01be78e7-8741- CSHL057        M       2019-10-15     L              C57BL/6J       Jax            3              None           2019-12-12 04: C57BL/6J      \n",
+       "030f3e05-9db0- KS031          M       2019-12-10     None           C57BL/6J       None           3              None           2020-02-14 04: C57BL/6J      \n",
+       "05ff9c40-a1c6- lic_1          M       2019-12-28     NA             Dat-Cre        None           3              None           2019-08-06 21: C57BL/6J      \n",
+       "   ...\n",
+       " (Total: 375)"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "subject.Subject & 'subject_birth_date > \"2019-01-01\"'"
    ]
@@ -252,9 +1483,173 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 11,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        \n",
+       "        <style type=\"text/css\">\n",
+       "            .Relation{\n",
+       "                border-collapse:collapse;\n",
+       "            }\n",
+       "            .Relation th{\n",
+       "                background: #A0A0A0; color: #ffffff; padding:4px; border:#f0e0e0 1px solid;\n",
+       "                font-weight: normal; font-family: monospace; font-size: 100%;\n",
+       "            }\n",
+       "            .Relation td{\n",
+       "                padding:4px; border:#f0e0e0 1px solid; font-size:100%;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(odd){\n",
+       "                background: #ffffff;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(even){\n",
+       "                background: #f3f1ff;\n",
+       "            }\n",
+       "            /* Tooltip container */\n",
+       "            .djtooltip {\n",
+       "            }\n",
+       "            /* Tooltip text */\n",
+       "            .djtooltip .djtooltiptext {\n",
+       "                visibility: hidden;\n",
+       "                width: 120px;\n",
+       "                background-color: black;\n",
+       "                color: #fff;\n",
+       "                text-align: center;\n",
+       "                padding: 5px 0;\n",
+       "                border-radius: 6px;\n",
+       "                /* Position the tooltip text - see examples below! */\n",
+       "                position: absolute;\n",
+       "                z-index: 1;\n",
+       "            }\n",
+       "            #primary {\n",
+       "                font-weight: bold;\n",
+       "                color: black;\n",
+       "            }\n",
+       "\n",
+       "            #nonprimary {\n",
+       "                font-weight: normal;\n",
+       "                color: white;\n",
+       "            }\n",
+       "\n",
+       "            /* Show the tooltip text when you mouse over the tooltip container */\n",
+       "            .djtooltip:hover .djtooltiptext {\n",
+       "                visibility: visible;\n",
+       "            }\n",
+       "        </style>\n",
+       "        \n",
+       "        <b></b>\n",
+       "            <div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+       "            <table border=\"1\" class=\"Relation\">\n",
+       "                <thead> <tr style=\"text-align: right;\"> <th> <div class=\"djtooltip\">\n",
+       "                                <p id=\"primary\">subject_uuid</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_nickname</p>\n",
+       "                                <span class=\"djtooltiptext\">nickname</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">sex</p>\n",
+       "                                <span class=\"djtooltiptext\">sex</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_birth_date</p>\n",
+       "                                <span class=\"djtooltiptext\">birth date</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">ear_mark</p>\n",
+       "                                <span class=\"djtooltiptext\">ear mark</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_line</p>\n",
+       "                                <span class=\"djtooltiptext\">name</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_source</p>\n",
+       "                                <span class=\"djtooltiptext\">name of source</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">protocol_number</p>\n",
+       "                                <span class=\"djtooltiptext\">protocol number</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_description</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_ts</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_strain</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div> </th> </tr> </thead>\n",
+       "                <tbody> <tr> <td>077d4b11-c784-4cb9-983c-5a596815434f</td>\n",
+       "<td>ZM_1735</td>\n",
+       "<td>F</td>\n",
+       "<td>2019-02-27</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>CCU - Vivarium colonies</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-08-06 21:30:42</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>088b6898-0a86-435e-b91f-eab829a846f6</td>\n",
+       "<td>SWC_005</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-02-05</td>\n",
+       "<td>NA (Rear HP)</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>4</td>\n",
+       "<td>ID: 919175</td>\n",
+       "<td>2019-09-25 01:33:26</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>09629112-d258-4f00-86f0-e9374dcb7cb3</td>\n",
+       "<td>ZM_1887</td>\n",
+       "<td>F</td>\n",
+       "<td>2019-03-04</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Jax</td>\n",
+       "<td>3</td>\n",
+       "<td>Black tail tip</td>\n",
+       "<td>2019-08-06 21:30:42</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>09da30a5-53cd-4f69-85d9-1accb3fa523b</td>\n",
+       "<td>CSHL028</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-02-19</td>\n",
+       "<td>RL</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>None</td>\n",
+       "<td>1</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-09-25 01:33:26</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>0d219ef3-6282-4602-b99f-a40d06d99bb2</td>\n",
+       "<td>SWC_002</td>\n",
+       "<td>F</td>\n",
+       "<td>2019-01-19</td>\n",
+       "<td>L (Front HP)</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>4</td>\n",
+       "<td>ID: 919178</td>\n",
+       "<td>2019-09-25 01:33:26</td>\n",
+       "<td>C57BL/6J</td> </tr> </tbody>\n",
+       "            </table>\n",
+       "            <p>...</p>\n",
+       "            <p>Total: 78</p></div>\n",
+       "            "
+      ],
+      "text/plain": [
+       "*subject_uuid  subject_nickna sex     subject_birth_ ear_mark       subject_line   subject_source protocol_numbe subject_descri subject_ts     subject_strain\n",
+       "+------------+ +------------+ +-----+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+\n",
+       "077d4b11-c784- ZM_1735        F       2019-02-27     None           C57BL/6J       CCU - Vivarium 3              None           2019-08-06 21: C57BL/6J      \n",
+       "088b6898-0a86- SWC_005        M       2019-02-05     NA (Rear HP)   C57BL/6J       Charles River  4              ID: 919175     2019-09-25 01: C57BL/6J      \n",
+       "09629112-d258- ZM_1887        F       2019-03-04     None           C57BL/6J       Jax            3              Black tail tip 2019-08-06 21: C57BL/6J      \n",
+       "09da30a5-53cd- CSHL028        M       2019-02-19     RL             C57BL/6J       None           1              None           2019-09-25 01: C57BL/6J      \n",
+       "0d219ef3-6282- SWC_002        F       2019-01-19     L (Front HP)   C57BL/6J       Charles River  4              ID: 919178     2019-09-25 01: C57BL/6J      \n",
+       "   ...\n",
+       " (Total: 78)"
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "subject.Subject & 'subject_birth_date between \"2019-01-01\" and \"2019-04-01\"'"
    ]
@@ -268,9 +1663,173 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 12,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "\n",
+       "        \n",
+       "        <style type=\"text/css\">\n",
+       "            .Relation{\n",
+       "                border-collapse:collapse;\n",
+       "            }\n",
+       "            .Relation th{\n",
+       "                background: #A0A0A0; color: #ffffff; padding:4px; border:#f0e0e0 1px solid;\n",
+       "                font-weight: normal; font-family: monospace; font-size: 100%;\n",
+       "            }\n",
+       "            .Relation td{\n",
+       "                padding:4px; border:#f0e0e0 1px solid; font-size:100%;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(odd){\n",
+       "                background: #ffffff;\n",
+       "            }\n",
+       "            .Relation tr:nth-child(even){\n",
+       "                background: #f3f1ff;\n",
+       "            }\n",
+       "            /* Tooltip container */\n",
+       "            .djtooltip {\n",
+       "            }\n",
+       "            /* Tooltip text */\n",
+       "            .djtooltip .djtooltiptext {\n",
+       "                visibility: hidden;\n",
+       "                width: 120px;\n",
+       "                background-color: black;\n",
+       "                color: #fff;\n",
+       "                text-align: center;\n",
+       "                padding: 5px 0;\n",
+       "                border-radius: 6px;\n",
+       "                /* Position the tooltip text - see examples below! */\n",
+       "                position: absolute;\n",
+       "                z-index: 1;\n",
+       "            }\n",
+       "            #primary {\n",
+       "                font-weight: bold;\n",
+       "                color: black;\n",
+       "            }\n",
+       "\n",
+       "            #nonprimary {\n",
+       "                font-weight: normal;\n",
+       "                color: white;\n",
+       "            }\n",
+       "\n",
+       "            /* Show the tooltip text when you mouse over the tooltip container */\n",
+       "            .djtooltip:hover .djtooltiptext {\n",
+       "                visibility: visible;\n",
+       "            }\n",
+       "        </style>\n",
+       "        \n",
+       "        <b></b>\n",
+       "            <div style=\"max-height:1000px;max-width:1500px;overflow:auto;\">\n",
+       "            <table border=\"1\" class=\"Relation\">\n",
+       "                <thead> <tr style=\"text-align: right;\"> <th> <div class=\"djtooltip\">\n",
+       "                                <p id=\"primary\">subject_uuid</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_nickname</p>\n",
+       "                                <span class=\"djtooltiptext\">nickname</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">sex</p>\n",
+       "                                <span class=\"djtooltiptext\">sex</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_birth_date</p>\n",
+       "                                <span class=\"djtooltiptext\">birth date</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">ear_mark</p>\n",
+       "                                <span class=\"djtooltiptext\">ear mark</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_line</p>\n",
+       "                                <span class=\"djtooltiptext\">name</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_source</p>\n",
+       "                                <span class=\"djtooltiptext\">name of source</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">protocol_number</p>\n",
+       "                                <span class=\"djtooltiptext\">protocol number</span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_description</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_ts</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div></th><th><div class=\"djtooltip\">\n",
+       "                                <p id=\"nonprimary\">subject_strain</p>\n",
+       "                                <span class=\"djtooltiptext\"></span>\n",
+       "                            </div> </th> </tr> </thead>\n",
+       "                <tbody> <tr> <td>019a22c1-b944-4494-9e38-0e45ae6697bf</td>\n",
+       "<td>SWC_022</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-06-18</td>\n",
+       "<td>NA (Front HP)</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Charles River</td>\n",
+       "<td>4</td>\n",
+       "<td>ID: 990762</td>\n",
+       "<td>2019-09-25 01:33:25</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>01be78e7-8741-4b40-bd64-79ed745431b5</td>\n",
+       "<td>CSHL057</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-10-15</td>\n",
+       "<td>L</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>Jax</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-12-12 04:43:42</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>030f3e05-9db0-46ba-a6ce-4274ff09b39e</td>\n",
+       "<td>KS031</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-12-10</td>\n",
+       "<td>None</td>\n",
+       "<td>C57BL/6J</td>\n",
+       "<td>None</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2020-02-14 04:56:14</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>05ff9c40-a1c6-479c-9655-3125b41a0673</td>\n",
+       "<td>lic_1</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-12-28</td>\n",
+       "<td>NA</td>\n",
+       "<td>Dat-Cre</td>\n",
+       "<td>None</td>\n",
+       "<td>3</td>\n",
+       "<td>None</td>\n",
+       "<td>2019-08-06 21:30:42</td>\n",
+       "<td>C57BL/6J</td></tr><tr><td>069f108c-c144-40c1-953d-2502950de79d</td>\n",
+       "<td>CSK-scan-007</td>\n",
+       "<td>M</td>\n",
+       "<td>2019-06-13</td>\n",
+       "<td>None</td>\n",
+       "<td>VGAT-ChR2</td>\n",
+       "<td>CSHL-Harris</td>\n",
+       "<td>3</td>\n",
+       "<td>clear skull cap for inhibition scan in IBL task</td>\n",
+       "<td>2019-08-30 04:24:54</td>\n",
+       "<td>B6.Cg</td> </tr> </tbody>\n",
+       "            </table>\n",
+       "            <p>...</p>\n",
+       "            <p>Total: 214</p></div>\n",
+       "            "
+      ],
+      "text/plain": [
+       "*subject_uuid  subject_nickna sex     subject_birth_ ear_mark       subject_line   subject_source protocol_numbe subject_descri subject_ts     subject_strain\n",
+       "+------------+ +------------+ +-----+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+ +------------+\n",
+       "019a22c1-b944- SWC_022        M       2019-06-18     NA (Front HP)  C57BL/6J       Charles River  4              ID: 990762     2019-09-25 01: C57BL/6J      \n",
+       "01be78e7-8741- CSHL057        M       2019-10-15     L              C57BL/6J       Jax            3              None           2019-12-12 04: C57BL/6J      \n",
+       "030f3e05-9db0- KS031          M       2019-12-10     None           C57BL/6J       None           3              None           2020-02-14 04: C57BL/6J      \n",
+       "05ff9c40-a1c6- lic_1          M       2019-12-28     NA             Dat-Cre        None           3              None           2019-08-06 21: C57BL/6J      \n",
+       "069f108c-c144- CSK-scan-007   M       2019-06-13     None           VGAT-ChR2      CSHL-Harris    3              clear skull ca 2019-08-30 04: B6.Cg         \n",
+       "   ...\n",
+       " (Total: 214)"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
    "source": [
     "subject.Subject & 'subject_birth_date > \"2019-01-01\"' & 'sex=\"M\"'"
    ]
@@ -284,9 +1843,21 @@
   },
   {
    "cell_type": "code",
-   "execution_count": null,
+   "execution_count": 13,
    "metadata": {},
-   "outputs": [],
+   "outputs": [
+    {
+     "ename": "NameError",
+     "evalue": "name 'ephys' is not defined",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+      "\u001b[1;32m<ipython-input-13-8742f0422300>\u001b[0m in \u001b[0;36m<module>\u001b[1;34m\u001b[0m\n\u001b[0;32m      1\u001b[0m \u001b[1;31m# subjects with Ephys recording\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[1;32m----> 2\u001b[1;33m \u001b[0msubject\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mSubject\u001b[0m \u001b[1;33m&\u001b[0m \u001b[0mephys\u001b[0m\u001b[1;33m.\u001b[0m\u001b[0mProbeInsertion\u001b[0m\u001b[1;33m\u001b[0m\u001b[1;33m\u001b[0m\u001b[0m\n\u001b[0m",
+      "\u001b[1;31mNameError\u001b[0m: name 'ephys' is not defined"
+     ]
+    }
+   ],
    "source": [
     "# subjects with Ephys recording\n",
     "subject.Subject & ephys.ProbeInsertion"

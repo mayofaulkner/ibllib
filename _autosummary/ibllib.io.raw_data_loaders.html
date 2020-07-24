@@ -467,7 +467,7 @@ dict_keys([‘Temperature_C’, ‘AirPressure_mb’, ‘RelativeHumidity’])</
 <code class="sig-name descname">sync_trials_robust</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">t0</span></em>, <em class="sig-param"><span class="n">t1</span></em>, <em class="sig-param"><span class="n">diff_threshold</span><span class="o">=</span><span class="default_value">0.001</span></em>, <em class="sig-param"><span class="n">drift_threshold_ppm</span><span class="o">=</span><span class="default_value">200</span></em>, <em class="sig-param"><span class="n">max_shift</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">return_index</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.io.raw_data_loaders.sync_trials_robust" title="Permalink to this definition">¶</a></dt>
 <dd><p>Attempts to find matching timestamps in 2 time-series that have an offset, are drifting,
 and are most likely incomplete: sizes don’t have to match, some pulses may be missing
-in any serie.
+in any series.
 Only works with irregular time series as it relies on the derivative to match sync.
 :param t0:
 :param t1:

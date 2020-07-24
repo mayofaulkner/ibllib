@@ -238,9 +238,54 @@
 </style>
 <div class="section" id="module-ibllib.qc.extended_qc">
 <span id="ibllib-qc-extended-qc"></span><h1>ibllib.qc.extended_qc<a class="headerlink" href="#module-ibllib.qc.extended_qc" title="Permalink to this headline">¶</a></h1>
+<p>“Extended QC” comprises a set of data quality control tests for various parts of the pipeline.
+Currently the ExtendedQC object collects the following classes:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>ONEQC:  Checks that a session’s extracted ALF files conform to the ALF specification,</dt><dd><p>namely that objects have the correct shape and matching length.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>BpodQC: Checks on data extracted from Bonsai/Bpod.  Amoung other things, checks tha delays</dt><dd><p>between trial events are within a tolerance specified by the proscribed task structure</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="simple">
+<dt>Example: Run full QC for a given session and view the results</dt><dd><p>eid = ‘c94463ed-57da-4f02-8406-46f2f03924f3’
+ext = ExtendedQC(eid, lazy=False)
+ext.compute_all_qc()
+print(ext.frame)</p>
+</dd>
+</dl>
+<p>TODO Integrate ephys QC</p>
+<dl class="py function">
+<dt id="ibllib.qc.extended_qc.compute_session_status">
+<code class="sig-name descname">compute_session_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frame</span></em>, <em class="sig-param"><span class="n">criteria</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.extended_qc.compute_session_status" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> – dictionary of QC test, with 1 value per test reflecting a probability</p></li>
+<li><p><strong>criteria</strong> – dictionary defining lower bounds (values) of categories (keys),</p></li>
+</ul>
+</dd>
+</dl>
+<p>written in ascending orders of importance (most critical first). Max bound: &lt;=1.
+e.g. ERROR is &gt;= 0.75, &lt;0.95 in default:
+criteria = {“CRITICAL”: 0,</p>
+<blockquote>
+<div><p>“ERROR”: 0.75,
+“WARNING”: 0.95,
+“PASS”: 0.99 }</p>
+</div></blockquote>
+<p>A “NANVAL” key is added to the criteria post-hoc for Nan values founds.
+:return: criteria, out_var_test_status, out_var_sess_status</p>
+</dd></dl>
+
 <dl class="py class">
 <dt id="ibllib.qc.extended_qc.ExtendedQC">
-<em class="property">class </em><code class="sig-name descname">ExtendedQC</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">one</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">eid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">lazy</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.extended_qc.ExtendedQC" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-name descname">ExtendedQC</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">eid</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">one</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">lazy</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.extended_qc.ExtendedQC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="py method">
 <dt id="ibllib.qc.extended_qc.ExtendedQC.compute_all_qc">
@@ -260,6 +305,11 @@
 <dl class="py method">
 <dt id="ibllib.qc.extended_qc.ExtendedQC.update_extended_qc">
 <code class="sig-name descname">update_extended_qc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.extended_qc.ExtendedQC.update_extended_qc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="ibllib.qc.extended_qc.ExtendedQC.compute_session_status">
+<code class="sig-name descname">compute_session_status</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">crit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.extended_qc.ExtendedQC.compute_session_status" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>

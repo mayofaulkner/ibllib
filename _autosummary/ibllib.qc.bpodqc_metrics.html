@@ -241,11 +241,13 @@
 <dl class="py class">
 <dt id="ibllib.qc.bpodqc_metrics.BpodQC">
 <em class="property">class </em><code class="sig-name descname">BpodQC</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">session_path_or_eid</span></em>, <em class="sig-param"><span class="n">one</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ensure_data</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">lazy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.bpodqc_metrics.BpodQC" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ibllib.qc.base.QC</span></code></p>
 <dl class="py method">
 <dt id="ibllib.qc.bpodqc_metrics.BpodQC.load_data">
 <code class="sig-name descname">load_data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">lazy</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.bpodqc_metrics.BpodQC.load_data" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Load the data required to compute the QC
+Subclasses may implement this for loading raw data</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="ibllib.qc.bpodqc_metrics.BpodQC.compute">
@@ -457,6 +459,18 @@ Criterion: 0 on 99% of trials</p>
 Variable name: audio_pre_trial
 Metric: Check if audio events exist between trialstart_time and (gocue_time-20ms)
 Criterion: 0 on 99% of trials</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ibllib.qc.bpodqc_metrics.load_wheel_integrity">
+<code class="sig-name descname">load_wheel_integrity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">wheel_data</span></em>, <em class="sig-param"><span class="n">re_encoding</span><span class="o">=</span><span class="default_value">'X1'</span></em>, <em class="sig-param"><span class="n">enc_res</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ibllib.qc.bpodqc_metrics.load_wheel_integrity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variable name: wheel_integrity
+Metric: (absolute difference of the positions - encoder resolution) + 1 if difference of
+timestamps &lt;= 0
+Criterion: Close to zero for &gt; 99% of samples
+:param wheel_data: dict of wheel data with keys (‘re_ts’, ‘re_pos’)
+:param re_encoding: the encoding of the wheel data, X1, X2 or X4
+:param enc_res: the rotary encoder resolution</p>
 </dd></dl>
 
 </div>
